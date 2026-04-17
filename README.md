@@ -146,5 +146,5 @@ Each script writes its figure to `figures/`.
 
 ## Author
 
-**Ali-Salem Amari** — M.Sc. in Physics and Mathematics (Fisymat),
+**A. S. Amari Rabah** — M.Sc. in Physics and Mathematics (Fisymat),
 University of Granada.
