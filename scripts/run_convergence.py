@@ -5,9 +5,17 @@ is expected to decay exponentially (faster than any algebraic rate) with
 the number of basis functions N.
 """
 
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import numpy as np
 import matplotlib.pyplot as plt
-from chebyshev_core import max_error
+from chebyshev.core import max_error
+
+FIGDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "figures"))
+os.makedirs(FIGDIR, exist_ok=True)
 
 # ------------------------------
 # Parameters
@@ -41,5 +49,6 @@ plt.title(rf"Spectral convergence (k = {k})")
 plt.grid(True, which="both", alpha=0.4)
 plt.legend()
 plt.tight_layout()
-plt.savefig("figures/convergence.png", dpi=150)
-plt.show()
+plt.savefig(os.path.join(FIGDIR, "convergence.png"), dpi=150)
+plt.close()
+print("saved figures/convergence.png")
