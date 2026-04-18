@@ -145,9 +145,10 @@ python scripts/run_k_influence.py    # error and cond vs k
 
 Each script writes its figure to `figures/`.
 
----
-
 ## Author
 
-**A. S. Amari Rabah** — M.Sc. in Physics and Mathematics (Fisymat),
-University of Granada.
+**A. S. Amari Rabah**
+
+Developed as part of the coursework for *Numerical Analysis of Pdes and Approximation* —
+Master's Degree in Physics and Mathematics (Fisymat),
+University of Granada, Spain.
