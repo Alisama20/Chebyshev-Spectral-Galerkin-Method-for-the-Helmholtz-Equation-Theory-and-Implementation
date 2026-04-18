@@ -54,8 +54,8 @@ below; full derivations are provided in the PDF reports.
 | 5 | Exploit the tensor structure: $A = K\otimes M + M\otimes K + k^{2}\,M\otimes M$. |
 | 6 | Solve the linear system $A\mathbf u = \mathbf b$ for the flattened coefficients $u_{ij}$. |
 
-The whole method lives in one small module,
-[`chebyshev_core.py`](chebyshev_core.py), and every numerical
+The whole method lives in the `chebyshev` package
+([`chebyshev/core.py`](chebyshev/core.py)), and every numerical
 experiment below is a ~40-line standalone script that imports from it.
 
 ---
@@ -111,11 +111,14 @@ LaTeX sources in [`latex/`](latex).
 
 ```
 Chebyshev-Spectral-Galerkin-Method-for-the-Helmholtz-Equation-Theory-and-Implementation/
-├── chebyshev_core.py         # shared basis, quadrature, matrix assembly, solver
-├── run_solution.py           # solve + 3D plot + pointwise error map
-├── run_convergence.py        # spectral convergence study
-├── run_condition.py          # conditioning of A vs N
-├── run_k_influence.py        # error and cond vs k
+├── chebyshev/
+│   ├── __init__.py           # package exports
+│   └── core.py               # basis, quadrature, matrix assembly, solver
+├── scripts/
+│   ├── run_solution.py       # solve + 3D plot + pointwise error map
+│   ├── run_convergence.py    # spectral convergence study
+│   ├── run_condition.py      # conditioning of A vs N
+│   └── run_k_influence.py    # error and cond vs k
 ├── figures/                  # PNGs produced by the scripts above
 ├── latex/
 │   ├── main_EN.tex
@@ -134,10 +137,10 @@ Chebyshev-Spectral-Galerkin-Method-for-the-Helmholtz-Equation-Theory-and-Impleme
 Requires Python 3.10+, `numpy`, `scipy` and `matplotlib`.
 
 ```bash
-python run_solution.py          # 3D numerical vs exact + error map
-python run_convergence.py       # spectral convergence
-python run_condition.py         # conditioning vs N
-python run_k_influence.py       # error and cond vs k
+python scripts/run_solution.py       # 3D numerical vs exact + error map
+python scripts/run_convergence.py    # spectral convergence
+python scripts/run_condition.py      # conditioning vs N
+python scripts/run_k_influence.py    # error and cond vs k
 ```
 
 Each script writes its figure to `figures/`.

@@ -6,13 +6,21 @@ number decrease as k grows (the matrix becomes increasingly
 mass-matrix-dominated).
 """
 
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import numpy as np
 import matplotlib.pyplot as plt
-from chebyshev_core import (
+from chebyshev.core import (
     build_1D_matrices,
     build_2D_matrix,
     max_error,
 )
+
+FIGDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "figures"))
+os.makedirs(FIGDIR, exist_ok=True)
 
 # ------------------------------
 # Parameters
@@ -58,5 +66,6 @@ axs[1].set_title("Conditioning")
 axs[1].grid(True, which="both", alpha=0.4)
 
 plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-plt.savefig("figures/k_influence.png", dpi=150)
-plt.show()
+plt.savefig(os.path.join(FIGDIR, "k_influence.png"), dpi=150)
+plt.close()
+print("saved figures/k_influence.png")

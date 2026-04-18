@@ -1,9 +1,17 @@
 """Solve -Delta u + k^2 u = f on (-1,1)^2 with Dirichlet BCs and plot the
 numerical solution against the manufactured analytical one."""
 
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import numpy as np
 import matplotlib.pyplot as plt
-from chebyshev_core import solve_helmholtz, evaluate_solution, u_exact
+from chebyshev.core import solve_helmholtz, evaluate_solution, u_exact
+
+FIGDIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "figures"))
+os.makedirs(FIGDIR, exist_ok=True)
 
 # ------------------------------
 # Parameters
@@ -61,5 +69,6 @@ ax3.set_aspect("equal")
 plt.colorbar(im, ax=ax3, fraction=0.045)
 
 plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-plt.savefig("figures/solution.png", dpi=150)
-plt.show()
+plt.savefig(os.path.join(FIGDIR, "solution.png"), dpi=150)
+plt.close()
+print("saved figures/solution.png")
