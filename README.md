@@ -13,6 +13,44 @@ of Granada.
 
 ---
 
+## Repository structure
+
+```
+Chebyshev-Spectral-Galerkin-Method-for-the-Helmholtz-Equation-Theory-and-Implementation/
+├── chebyshev/
+│   ├── __init__.py           # package exports
+│   └── core.py               # basis, quadrature, matrix assembly, solver
+├── scripts/
+│   ├── run_solution.py       # solve + 3D plot + pointwise error map
+│   ├── run_convergence.py    # spectral convergence study
+│   ├── run_condition.py      # conditioning of A vs N
+│   └── run_k_influence.py    # error and cond vs k
+├── figures/                  # PNGs produced by the scripts above
+├── latex/
+│   ├── main_EN.tex
+│   ├── main_ES.tex
+│   ├── bibliography.bib
+│   └── escudoUGRmonocromo.png
+├── Helmholtz.ipynb           # original notebook (kept for reference)
+├── MemoryEN.pdf
+└── MemoriaES.pdf
+```
+
+---
+
+## Report
+
+The full academic report is available in two languages:
+
+| File | Description |
+|------|-------------|
+| [MemoryEN.pdf](MemoryEN.pdf) | English version — weak formulation, Chebyshev-Galerkin basis, Kronecker assembly, convergence analysis |
+| [MemoriaES.pdf](MemoriaES.pdf) | Spanish version (original) |
+
+The LaTeX sources are in the [](latex/) folder together with the bibliography.
+
+---
+
 ## Problem
 
 Solve on $\Omega = (-1,1)\times(-1,1)$ with homogeneous Dirichlet
@@ -37,9 +75,7 @@ $$
 f(x,y) = e^{-x-y}\bigl[(1-y^{2})(x^{2}-4x+1) + (1-x^{2})(y^{2}-4y+1)
 + k^{2}(1-x^{2})(1-y^{2})\bigr].
 $$
-
 ---
-
 ## Method
 
 The key ideas of the spectral–Galerkin discretisation are summarised
@@ -57,9 +93,7 @@ below; full derivations are provided in the PDF reports.
 The whole method lives in the `chebyshev` package
 ([`chebyshev/core.py`](chebyshev/core.py)), and every numerical
 experiment below is a ~40-line standalone script that imports from it.
-
 ---
-
 ## Results
 
 ### Solution vs. exact for $N = 12$, $k = 5$
@@ -93,45 +127,7 @@ both the error and the condition number slowly **decrease** as $k$
 grows.
 
 ![](figures/k_influence.png)
-
 ---
-
-## Reports
-
-| Language | File |
-|----------|------|
-| English  | [`MemoryEN.pdf`](MemoryEN.pdf) |
-| Español  | [`MemoriaES.pdf`](MemoriaES.pdf) |
-
-LaTeX sources in [`latex/`](latex).
-
----
-
-## Repository structure
-
-```
-Chebyshev-Spectral-Galerkin-Method-for-the-Helmholtz-Equation-Theory-and-Implementation/
-├── chebyshev/
-│   ├── __init__.py           # package exports
-│   └── core.py               # basis, quadrature, matrix assembly, solver
-├── scripts/
-│   ├── run_solution.py       # solve + 3D plot + pointwise error map
-│   ├── run_convergence.py    # spectral convergence study
-│   ├── run_condition.py      # conditioning of A vs N
-│   └── run_k_influence.py    # error and cond vs k
-├── figures/                  # PNGs produced by the scripts above
-├── latex/
-│   ├── main_EN.tex
-│   ├── main_ES.tex
-│   ├── bibliography.bib
-│   └── escudoUGRmonocromo.png
-├── Helmholtz.ipynb           # original notebook (kept for reference)
-├── MemoryEN.pdf
-└── MemoriaES.pdf
-```
-
----
-
 ## Usage
 
 Requires Python 3.10+, `numpy`, `scipy` and `matplotlib`.
